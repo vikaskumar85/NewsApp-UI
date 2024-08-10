@@ -14,7 +14,7 @@ export class NewsDataServiceService {
   constructor(private _http:HttpClient) { }
 
 GetAllNews(pageNumber:number,pageSize : number):Observable<any>{
-  return this._http.get<any>(this.BaseUrl + "GetAllByPageIndex?Page="+ pageNumber + "&PageSize=" + pageSize );
+  return this._http.get<any>(this.BaseUrl + "GetAll?Page="+ pageNumber + "&PageSize=" + pageSize );
 }
 
 SearchNews(searchValue : any):Observable<any>{

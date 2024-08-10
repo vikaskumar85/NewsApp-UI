@@ -12,7 +12,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class NewsListComponent implements OnInit, AfterViewInit{
   constructor(private _newsDataServiceService: NewsDataServiceService) { }
-  displayedColumns: string[] = ['id', 'title', 'url'];
+  displayedColumns: string[] = ['title', 'url'];
   dataSource : any;
   NewsDataSource: any;
   @ViewChild(MatPaginator) paginator : MatPaginator = new MatPaginator(new MatPaginatorIntl(), ChangeDetectorRef.prototype);;
