@@ -6,9 +6,9 @@ import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 
 describe('NewsListComponent', () => {
   let fixture :any;
@@ -34,6 +34,25 @@ describe('NewsListComponent', () => {
   it('should create', () => {
     expect(NewsListComponent).toBeTruthy();
   });
+
+  it('should call GetNews on initialization', () => {
+    const getNewsSpy = spyOn(app, 'GetNews').and.callFake(() => {
+      return of({});
+    });
+    app.ngOnInit();
+    expect(getNewsSpy).toHaveBeenCalledWith(app.defaultPageNumber, app.defaultPageSize);
+  });
+
+ 
+  /* it('should call GetNews when paginator changes', () => {
+    const getNewsSpy = spyOn(app, 'GetNews').and.callFake(() => {
+      return of({});
+    });
+    app.ngAfterViewInit();
+    expect(getNewsSpy).toHaveBeenCalled();
+  }); */
+
+  
   it('should return  List of News',()=>{
   
     const pageNumber = 1;

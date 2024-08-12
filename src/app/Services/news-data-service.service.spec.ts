@@ -40,7 +40,7 @@ describe('News-Data-Service', () => {
       });
 
 
-      it('should get news paas search value found', () => {
+      it('should get news if search value found', () => {
         const searchValue = "Hetzner";
         
         const mockAPIResponse = {
