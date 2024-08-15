@@ -1,37 +1,22 @@
 import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
-import { NewsListComponent } from './news-list/news-list.component';
-import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatButtonModule } from '@angular/material/button';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatInputModule } from '@angular/material/input';
 
-  describe('AppComponent', () => {
-    let fixture :any;
-    let app : any;
-    let service : any;
+describe('AppComponent', () => {
+  beforeEach(() => TestBed.configureTestingModule({
+    imports: [RouterTestingModule],
+    declarations: [AppComponent]
+  }));
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        HttpClientModule,MatFormFieldModule,MatPaginatorModule,MatButtonModule,MatInputModule,MatProgressSpinnerModule,MatFormField
-      ],
-      declarations: [
-        AppComponent,
-        [NewsListComponent]
-      ]
-    }).compileComponents();
-    
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
   });
 
-beforeEach(()=>{
-  fixture = TestBed.createComponent(AppComponent);
-  app = fixture.componentInstance;
-})
-
-it("shoult create the app",()=>{
-  expect(app).toBeTruthy();
-});
+  it(`should have as title 'News-app'`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('News-app');
+  });
 });

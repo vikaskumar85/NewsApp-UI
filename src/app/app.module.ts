@@ -1,38 +1,27 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import {MatTableModule} from '@angular/material/table';
-import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule} from '@angular/material/input';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { NewsListComponent } from './news-list/news-list.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
+import { ViewNewsComponent } from './viewnews/viewnews.component';
+import { PaginationComponent } from './_components/pagination/pagination.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    NewsListComponent
+    ViewNewsComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatProgressSpinnerModule
+    FormsModule,
   ],
-  providers: [
-    provideClientHydration(),
-    provideAnimationsAsync(),
-    provideHttpClient(withFetch())
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

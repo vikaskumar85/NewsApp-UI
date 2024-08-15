@@ -1,0 +1,47 @@
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by Title"
+          [(ngModel)]="searchText"
+          (input)="searchData($event)" />
+      </div>
+    </div>
+<div class="col-md-12">
+      <h4>News List</h4>
+   
+      <div class="card m-3">
+       
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th><a (click)="sortBy('id')" style="cursor: pointer;">Id {{sortIcon('id')}}</a></th>
+                        <th><a (click)="sortBy('title')" style="cursor: pointer;">Title {{sortIcon('title')}}</a></th>
+                        <th><a (click)="sortBy('url')" style="cursor: pointer;">Url {{sortIcon('url')}}</a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of pageOfItems">
+                        <td>{{item.id}}</td>
+                        <td>{{item.title}}</td>
+                        <td><a style="color: black;" [href]="item.url" target="_blank">{{item.url}}</a></td>
+                    </tr>
+                    <tr *ngIf="loading">
+                        <td colspan="5" class="text-center py-5">
+                            <span class="spinner-border spinner-border-lg align-center"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+       
+         <div class="card-footer pb-0 pt-3">
+            <pagination [items]="items" (changePage)="onChangePage($event)"></pagination>
+        </div> 
+    
+</div>
+
+
+  </div>
+  
